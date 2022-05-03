@@ -6,18 +6,11 @@
   "scripts": {
     "start": "node server"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ichtrojan/node-redis.git"
-  },
   "author": "Michael Okoh",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/ichtrojan/node-redis/issues"
-  },
-  "homepage": "https://github.com/ichtrojan/node-redis#readme",
   "dependencies": {
     "body-parser": "^1.18.2",
+    "cors": "^2.8.5",
     "express": "^4.16.2",
     "express-handlebars": "^3.0.0",
     "method-override": "^2.3.10",

@@ -6,9 +6,10 @@ let redis = require("redis")
 let client = redis.createClient({
     url: "redis://localhost:6379",
 })
+let cors = require("cors")
 
 // define routes
-let routes = require("./Routes/api")
+let routes = require("./routes/api")
 const { url } = require("inspector")
 
 // Set Port
@@ -25,6 +26,19 @@ client.on("connect", () => {
 // body-parser
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
+
+app.use(cors())
+
+app.use((req, res, next) => {
+    res.setHeader("Acces-Control-Allow-Origin", "*")
+    res.setHeader("Acces-Control-Allow-Methods", "GET,POST,PUT,PATCH,DELETE")
+    res.setHeader(
+        "Acces-Contorl-Allow-Methods",
+        "Content-Type",
+        "Authorization"
+    )
+    next()
+})
 
 // methodOverride
 app.use(methodOverride("_method"))

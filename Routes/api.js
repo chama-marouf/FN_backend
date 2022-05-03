@@ -1,25 +1,25 @@
 let express = require("express")
 let Route = express()
-let redis = require("../Controllers/RedisController")
+let redis = require("../controllers/redisController")
 
 // return instructions
 Route.get("/", (req, res, next) => {
     res.send("FastNed Application | check Readme for instructions")
 })
 
-// get all users
+// get all locations
 Route.get("/locations", redis.get_all_locations)
 
-// add a new user
-Route.post("/user/add", redis.add_user)
+// add a new location
+Route.post("/location/add", redis.add_location)
 
-// delete a user
-Route.delete("/user/delete/:id", redis.delete_user)
+// delete a location
+Route.delete("/location/delete/:id", redis.delete_location)
 
-// get a user by id
-Route.get("/user/:id", redis.get_user)
+// get a location by id
+Route.get("/location/:id", redis.get_location)
 
-// update a user by id
-Route.put("/user/update/:id", redis.update_user)
+// update a location by id
+Route.put("/location/update/:id", redis.update_location)
 
 module.exports = Route
